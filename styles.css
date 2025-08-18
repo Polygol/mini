@@ -1,0 +1,182 @@
+/* --- UNIVERSAL STYLES --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrollbars */
+    transition: background-color 0.5s, color 0.5s;
+}
+
+a {
+    color: #0088cc;
+    text-decoration: underline;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #666;
+    margin: 10px 0;
+}
+
+input, button {
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+}
+
+/* --- THEME DEFINITIONS --- */
+
+/* Dark Theme (Default) */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+body.dark-theme .emulated-panel {
+    background-color: #333333;
+    border: 1px solid #555555;
+}
+body.dark-theme a { color: #87cefa; }
+body.dark-theme hr { border-top: 1px solid #444; }
+
+/* Light Theme */
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+body.light-theme .emulated-panel {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+body.light-theme a { color: #0000ff; }
+body.light-theme hr { border-top: 1px solid #bbbbbb; }
+
+/* --- PAGE STRUCTURE --- */
+.main-container {
+    border: 0;
+}
+
+.main-content-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fullscreen-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below UI elements */
+    text-decoration: none;
+    border: 0;
+}
+
+/* --- UI ELEMENTS --- */
+.persistent-clock, .home-button {
+    position: absolute;
+    top: 15px;
+    z-index: 10;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+.persistent-clock { left: 15px; }
+.home-button { right: 15px; text-decoration: none; }
+
+/* --- HOME SCREEN --- */
+.clock-display {
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.date-display {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.weather-display {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* --- APP SCREEN --- */
+.app-grid {
+    display: inline-block; /* Allows centering */
+}
+.app-link {
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    text-align: center;
+}
+.app-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 5px auto;
+    background-color: #555; /* Placeholder color */
+    border: 1px solid #888;
+}
+body.light-theme .app-icon {
+    background-color: #ccc;
+    border: 1px solid #999;
+}
+
+/* --- INDIVIDUAL APP PAGES --- */
+.app-container {
+    width: 90%;
+    max-width: 500px;
+}
+.app-header {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.app-content .input-group {
+    margin-bottom: 15px;
+}
+.app-content .result-area {
+    margin-top: 15px;
+    padding: 10px;
+    min-height: 50px;
+    border: 1px solid #888;
+}
+body.light-theme .app-content .result-area {
+    border: 1px solid #999;
+}
+
+/* --- CONTROLS PANEL --- */
+.controls-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    transform: translate(-50%, -50%); /* JS fallback required for IE8 */
+    z-index: 100;
+    padding: 20px;
+}
+.controls-content {
+    position: relative;
+}
+.close-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- VISUAL EFFECTS --- */
+/* Default (Emulated) Mode */
+.emulated-panel {
+    border-radius: 8px; /* Ignored by old browsers */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ignored by old browsers */
+}
+
+/* No-Effects Mode */
+body.no-effects .emulated-panel {
+    border-radius: 0;
+    box-shadow: none;
+    background-image: none !important;
+}
+
+/* ANIMATIONS */
+body.reduce-animations * {
+    transition: none !important;
+}
