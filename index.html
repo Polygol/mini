@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Polygol mini</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <!-- This link covers the entire page to act as a button to the app screen -->
+    <a href="apps.html" class="fullscreen-link"></a>
+
+    <!-- Main container table for layout -->
+    <table class="main-container" width="100%" height="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="main-content-cell" align="center" valign="middle">
+
+                <!-- Persistent Clock / Controls Button -->
+                <div class="persistent-clock" id="controlsButton">
+                    Controls
+                </div>
+
+                <!-- Home Button (placeholder for consistent layout, hidden on this page) -->
+                <div class="home-button" style="display: none;">Home</div>
+
+                <!-- Clock and Date Display -->
+                <div id="date" class="date-display"></div>
+                <div id="clock" class="clock-display"></div>
+
+                <!-- Weather Display (optional) -->
+                <div id="weather-container" class="weather-display" style="display:none;">
+                    <span id="weather-text"></span>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Controls Panel (hidden by default) -->
+    <div id="controlsPanel" class="controls-panel" style="display:none;">
+        <div class="controls-content">
+            <h3>Controls</h3>
+            <div id="closeControlsButton" class="close-button">X</div>
+
+            <p><b>Theme:</b></p>
+            <button id="themeButton">Switch to Light Mode</button>
+
+            <p><b>Wallpaper:</b></p>
+            <input type="text" id="wallpaperUrlInput" size="30" value="Enter image URL and press Set" />
+            <button id="setWallpaperButton">Set</button>
+            <button id="resetWallpaperButton">Reset</button>
+
+            <hr>
+
+            <p><b>Performance:</b></p>
+            <input type="checkbox" id="animationsToggle" /> Reduce Animations<br>
+            <input type="checkbox" id="effectsToggle" /> Reduce Visual Effects
+
+            <hr>
+
+            <p><b>Features:</b></p>
+            <input type="checkbox" id="weatherToggle" /> Show Weather
+
+        </div>
+    </div>
+
+    <!-- Shared JavaScript File -->
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
