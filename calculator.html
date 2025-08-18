@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Polygol mini | Calculator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <table class="main-container" width="100%" height="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="main-content-cell" align="center" valign="middle">
+
+                <div class="persistent-clock" id="controlsButton">Controls</div>
+                <a href="index.html" class="home-button">Home</a>
+
+                <div class="app-container emulated-panel">
+                    <h2 class="app-header">Calculator</h2>
+                    <div class="app-content">
+                        <input type="text" id="calcDisplay" size="25" readonly="readonly" style="text-align:right; margin-bottom:10px;" />
+                        <table id="calcButtons" width="100%">
+                            <tr>
+                                <td><button>7</button></td><td><button>8</button></td><td><button>9</button></td><td><button>/</button></td>
+                            </tr>
+                            <tr>
+                                <td><button>4</button></td><td><button>5</button></td><td><button>6</button></td><td><button>*</button></td>
+                            </tr>
+                            <tr>
+                                <td><button>1</button></td><td><button>2</button></td><td><button>3</button></td><td><button>-</button></td>
+                            </tr>
+                            <tr>
+                                <td><button>0</button></td><td><button>.</button></td><td><button>+</button></td><td><button>=</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><button style="width:100%;">C</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Controls Panel -->
+    <div id="controlsPanel" class="controls-panel" style="display:none;">
+        <!-- ... Controls content is identical to index.html and can be copied here ... -->
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+        (function() {
+            var display = document.getElementById('calcDisplay');
+            var buttons = document.getElementById('calcButtons').getElementsByTagName('button');
+            var currentInput = '';
+            var operator = '';
+            var operand1 = null;
+
+            function handleInput(value) {
+                if (!isNaN(parseInt(value)) || value === '.') { // Number or decimal
+                    currentInput += value;
+                    display.value = currentInput;
+                } else if (value === 'C') { // Clear
+                    currentInput = '';
+                    operator = '';
+                    operand1 = null;
+                    display.value = '';
+                } else if (value === '=') { // Equals
+                    if (operand1 !== null && operator && currentInput) {
+                        var operand2 = parseFloat(currentInput);
+                        var result;
+                        switch (operator) {
+                            case '+': result = operand1 + operand2; break;
+                            case '-': result = operand1 - operand2; break;
+                            case '*': result = operand1 * operand2; break;
+                            case '/': result = operand1 / operand2; break;
+                        }
+                        display.value = result;
+                        currentInput = result.toString();
+                        operand1 = null;
+                        operator = '';
+                    }
+                } else { // Operator
+                    if (currentInput) {
+                        operand1 = parseFloat(currentInput);
+                        operator = value;
+                        currentInput = '';
+                    }
+                }
+            }
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = function() {
+                    handleInput(this.innerHTML);
+                };
+            }
+        })();
+    </script>
+</body>
+</html>
