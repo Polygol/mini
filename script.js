@@ -100,15 +100,8 @@
 
         if (!controlsButton || !controlsPanel) return;
 
-        // IE8 Translate Fallback
-        function centerPanel() {
-             controlsPanel.style.marginLeft = -(controlsPanel.offsetWidth / 2) + 'px';
-             controlsPanel.style.marginTop = -(controlsPanel.offsetHeight / 2) + 'px';
-        }
-
         controlsButton.onclick = function() {
             controlsPanel.style.display = "block";
-            centerPanel();
         };
         closeControlsButton.onclick = function() {
             controlsPanel.style.display = "none";
