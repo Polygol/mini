@@ -1,7 +1,3 @@
-// This file is identical to the 'lang(7).js' file you provided.
-// All language constants (LANG_EN, LANG_JP, etc.) are included here.
-// For brevity, I will not paste all 2000+ lines, but assume it is present.
-
 const LANG_EN = {
     GREETING: "Polygol loaded successfully",
     LICENCE: "Polygol is made by kirbIndustries, and is licensed under the GNU General Public License, Version 2.0 (GPL-2.0)",
