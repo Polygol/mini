@@ -1,71 +1,79 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Polygol mini</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
-    <!-- This link covers the entire page to act as a button to the app screen -->
-    <a href="apps.html" class="fullscreen-link"></a>
-
-    <!-- Main container table for layout -->
-    <table class="main-container" width="100%" height="100%" cellpadding="0" cellspacing="0">
-        <tr>
-            <td class="main-content-cell" align="center" valign="middle">
-
-                <!-- Persistent Clock / Controls Button -->
-                <div class="persistent-clock" id="controlsButton">
-                    Controls
-                </div>
-
-                <!-- Home Button (placeholder for consistent layout, hidden on this page) -->
-                <div class="home-button" style="display: none;">Home</div>
-
-                <!-- Clock and Date Display -->
-                <div id="date" class="date-display"></div>
-                <div id="clock" class="clock-display"></div>
-
-                <!-- Weather Display (optional) -->
-                <div id="weather-container" class="weather-display" style="display:none;">
-                    <span id="weather-text"></span>
-                </div>
-
-            </td>
-        </tr>
-    </table>
-
-    <!-- Controls Panel (hidden by default) -->
-    <div id="controlsPanel" class="controls-panel" style="display:none;">
-        <div class="controls-content">
-            <h3>Controls</h3>
-            <div id="closeControlsButton" class="close-button">X</div>
-
-            <p><b>Theme:</b></p>
-            <button id="themeButton">Switch to Light Mode</button>
-
-            <p><b>Wallpaper:</b></p>
-            <input type="text" id="wallpaperUrlInput" size="30" value="Enter image URL and press Set" />
-            <button id="setWallpaperButton">Set</button>
-            <button id="resetWallpaperButton">Reset</button>
-
-            <hr>
-
-            <p><b>Performance:</b></p>
-            <input type="checkbox" id="animationsToggle" /> Reduce Animations<br>
-            <input type="checkbox" id="effectsToggle" /> Reduce Visual Effects
-
-            <hr>
-
-            <p><b>Features:</b></p>
-            <input type="checkbox" id="weatherToggle" /> Show Weather
-
+    <!-- Main UI Container -->
+    <div id="main-ui">
+        <div id="date-container" class="date"></div>
+        <div id="clock-container" class="clock"></div>
+        <div id="weather-container" class="weather-widget">
+            <span id="temperature">--°</span>
+            <span id="weather-icon" class="material-symbols-rounded">device_thermostat</span>
         </div>
     </div>
 
-    <!-- Shared JavaScript File -->
-    <script type="text/javascript" src="script.js"></script>
+    <!-- Top Bar for Controls and Status -->
+    <div id="top-bar">
+        <div id="status-icons">
+             <!-- Status icons like Wifi, Battery can be added here later -->
+        </div>
+        <div id="controls-trigger" class="material-symbols-rounded">podium</div>
+    </div>
+
+    <!-- Pull-down Control Shade -->
+    <div id="control-shade">
+        <div class="shade-header">
+            <div id="shade-time"></div>
+            <div id="shade-date"></div>
+        </div>
+        <div class="quick-controls-grid">
+            <!-- Tiles will be dynamically inserted by JS -->
+        </div>
+        <div class="settings-footer">
+            <div id="edit-controls-btn" class="material-symbols-rounded">edit</div>
+            <div id="power-btn" class="material-symbols-rounded">power_settings_new</div>
+        </div>
+    </div>
+
+    <!-- Swipe-up App Drawer -->
+    <div id="app-drawer">
+        <div class="drawer-handle-container">
+            <div class="drawer-handle"></div>
+        </div>
+        <div class="drawer-header">Apps</div>
+        <div id="app-grid">
+            <!-- App icons will be dynamically inserted by JS -->
+        </div>
+        <div id="alpha-sorter">
+            <!-- Alphabetical sorter letters will be inserted by JS -->
+        </div>
+    </div>
+
+    <!-- Bottom Gesture Pill -->
+    <div id="bottom-pill"></div>
+
+    <!-- Overlays -->
+    <div id="shade-overlay" class="overlay"></div>
+    <div id="drawer-overlay" class="overlay"></div>
+    <div id="fullscreen-embed-container">
+        <!-- Gurapps will be loaded here -->
+    </div>
+    <div id="brightness-overlay"></div>
+
+
+    <!-- Scripts -->
+    <script src="lang.js"></script>
+    <script src="index.js"></script>
+
 </body>
 </html>
